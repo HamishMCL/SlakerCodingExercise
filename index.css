@@ -1,0 +1,21 @@
+ul{
+    list-style-type: none;
+}
+
+
+p.pointer {
+    cursor: pointer;
+    margin-top:10px;
+    margin-bottom: 10px;
+  }
+
+.navbar-brand{
+      border-bottom:1px solid F1F1F1;
+  }
+#posts{
+    border: 1px solid black;
+}
+  .card{
+      border: 1px solid black;
+      padding:5px;
+  }
