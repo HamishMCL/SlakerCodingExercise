@@ -31,7 +31,7 @@
                   </div>
                   <div class="col-sm">
                     <h3>Posts - </h3>
-                    <div class='card' v-for="post in posts" :key="post.id">
+                    <div class='card' v-for="post in posts.slice(0, 10)" :key="post.id">
               
                         <p  class="pointer" v-on:click="GetPost(post.id)" >{{post.title}} </p>
                     </div>
