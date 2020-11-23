@@ -1,21 +1,61 @@
 ul{
     list-style-type: none;
 }
-
+.navbar{
+border-bottom:1px solid  #E3E3E3;
+height:50px;
+margin-bottom:15px;
+}
 
 p.pointer {
     cursor: pointer;
     margin-top:10px;
     margin-bottom: 10px;
+    text-decoration: underline;
   }
 
-.navbar-brand{
-      border-bottom:1px solid F1F1F1;
+
+.user-widget{
+  background-color: F1F1F1;
+    width:auto;
+    height:auto;
+    border:1px solid #CDCDCD;
+    margin-bottom:10px;
+    padding:15px;
   }
-#posts{
-    border: 1px solid black;
+.user-widget:hover{
+  background-color: #EBEBEB;
 }
-  .card{
-      border: 1px solid black;
+
+#image{
+  width: 50px;
+  height: 50px;
+  background-color: #6CC454;
+  border-radius: 30px;
+  display: block;
+ 
+}
+#name{
+
+  margin:0px;
+  padding:0px;
+
+  font-size:16px;
+  font-weight:700;
+
+
+}
+#username{
+
+  margin:0px;
+  
+
+}
+#post{
+
+  padding:20px;
+}
+.card{
       padding:5px;
-  }
+      font-size:13;
+}

@@ -6,66 +6,50 @@
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css">
         <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     </head>
     <body>
                
         <div id="app" >
-            <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand" href="#">Review Exercise</a>
+            <nav class="navbar">
+                <p class="navbar-brand" >Review Exercise</p>
               </nav>
-
-            <div class="container">
+            <div class="container" style="width:500px;">
                 <div class="row">
                   <div class="col-sm">
                 
-                    <h3>Users</h3>  
-                    <user-widget
+                    
+                    <user-widget 
                         v-for="user in users"
                         v-bind:user="user"
                         v-bind:key="user.id"
                         v-bind:name="user.name"
-                       
-                    >
+                        v-bind:id="user.id"
+                      >
                     </user-widget>
-
                   </div>
-                  <div class="col-sm">
-                    <h3>Posts - </h3>
-                    <div class='card' v-for="post in posts.slice(0, 10)" :key="post.id">
-              
+
+                  <div  id="posts" v-show="showPosts">
+                    <h5>Posts </h5>
+                    <div v-for="post in posts.slice(0, 10)" :key="post.id" :id="post.id +'post' " >
                         <p  class="pointer" v-on:click="GetPost(post.id)" >{{post.title}} </p>
                     </div>
-
-
                   </div>
-                  <div class="col-sm " class="card-body" style="width: 18rem;" >
-                      <h3>Details</h3>
-                      <div class='card' v-for="poss in post" >
-                        
-                        <h3>Title</h3>
+
+                  <div id="post"  v-show="showPost"  >           
+                      <div  v-for="poss in post" >
+                        <h4>Details</h4>
+                        <hr>
+                        <h5>Title</h5>
                         <p class="pointer" >{{poss.title}}</p>
-                        <h3>Info</h3>
+                        <h5>Info</h5>
                         <p class="pointer" >{{poss.body}}</p>
+                        <hr>
                       </div>
-                     
-                      
                   </div>
                 </div>
               </div>
-            <div class="container">
-            
-            </div>
-              
-         
-             
-
-         
-          
-
-
-        </div>
-  
-        
+        </div>      
         <script src="index.js"></script>
     </body>
 </html>

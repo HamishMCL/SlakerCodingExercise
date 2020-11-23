@@ -1,16 +1,35 @@
 Vue.component('user-widget', {
+    data: function () {
+        return {
+          postsHidden: true,
+          postss: []
+        }
+      },
     props: ['user'],
     template: `
-    <div class="user-widget " >
-        <ul>  
-        <button class="pointer btn btn-primary"  v-on:click="changeSetting(user.id)" >{{user.name}}</button>   
-        </ul>            
+    <div class="user-widget" >
+        <div>
+            <div id="image"></div>
+            <p id="name"> {{user.name}} </p>  
+        </div>
+        <p v-show="postsHidden" class="pointer" v-on:click="changeSetting(user.id)" > Show Posts</p>   
+        <p v-show="!postsHidden" class="pointer" v-on:click="hidePosts" > Hide Posts</p>       
     </div> 
     `,  methods: {
         changeSetting(value) {
-            this.$parent.GetPosts(value);
+            this.$parent.GetPosts(value)
+            this.postsHidden = false
+      
         },
+        hidePosts(){
+          this.$parent.showPosts = false
+          this.postsHidden = true
+          this.$parent.showPost = false
+        },  
+
       },
+      
+
   })
 
 var app = new Vue({  
@@ -20,7 +39,8 @@ var app = new Vue({
            users: [],
            posts: [],
            post: [],
-           username : ""
+           showPosts: false,
+           showPost : false
         }
     }, 
     created () {
@@ -33,22 +53,23 @@ var app = new Vue({
    
      methods: {
             GetPosts: function (id) {
-                
                 axios
                 .get('https://jsonplaceholder.typicode.com/posts?userId='+id)
                 .then(response => (this.posts = response.data))
                 
                  this.post = ['']
-                 this.username = this.posts[0].name
-               
+                 this.showPosts = true
+                 this.showPost = false
+                 $('#posts').appendTo('#'+id)
+                 $('#post').appendTo('#'+id)
               },
               GetPost: function (postid) {
-                console.log('https://jsonplaceholder.typicode.com/posts?id='+postid)
                 axios
                 .get('https://jsonplaceholder.typicode.com/posts?id='+postid)
                 .then(response => (this.post = response.data))
-                
-              
+                this.showPost = true
+                $('#post').appendTo('#'+postid+'post')
+            
               }
         },
       
